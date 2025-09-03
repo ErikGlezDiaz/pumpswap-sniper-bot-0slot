@@ -1,0 +1,60 @@
+# PumpSwap 0-Slot Sniper Bot Configuration
+
+# PumpSwap gRPC configuration
+pumpswap_grpc_url = "https://grpc.pumpswap.fun:443"
+pumpswap_api_key = ""
+
+# Solana RPC configuration
+solana_rpc_url = "https://api.mainnet-beta.solana.com"
+solana_ws_url = "wss://api.mainnet-beta.solana.com"
+
+# Wallet configuration
+private_key = ""
+wallet_address = ""
+
+# Sniper configuration
+target_tokens = []
+min_liquidity = 10.0
+max_slippage = 5.0
+snipe_amount = 1.0
+max_gas_price = 1000000
+
+# MEV configuration
+enable_mev = true
+mev_strategies = ["arbitrage", "frontrun", "backrun"]
+max_mev_profit = 1000.0
+
+# Confirmation service
+confirmation_service = "jito"
+
+# Jito configuration
+jito_url = "https://mainnet.block-engine.jito.wtf"
+jito_tip_account = "Cw8CFyM9FkoMi7K7Crf6HNQqf4uEMzpKw6QNghXLvLkY"
+jito_tip_amount = 10000
+
+# Nozomi configuration
+nozomi_url = "https://api.nozomi.com"
+nozomi_api_key = ""
+
+# Performance settings
+max_concurrent_trades = 5
+transaction_timeout = 30
+retry_attempts = 3
+retry_delay = 1000
+
+# Monitoring
+enable_metrics = true
+metrics_port = 9090
+log_level = "info"
+
+# Risk management
+max_daily_loss = 100.0
+max_position_size = 10.0
+stop_loss_percentage = 10.0
+take_profit_percentage = 50.0
+
+# Advanced settings
+priority_fee_multiplier = 1.5
+bundle_timeout = 5000
+max_bundle_size = 10
+enable_frontrunning_protection = true

